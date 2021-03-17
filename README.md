@@ -29,12 +29,19 @@ The robot also recognizes a set of basic commands. Each command drains the batte
 A sequence of valid commands may look like: [ C, TR, A, C, A, C, A, C, TL, B, C, A, A, C, A, A, C, TL, C ].
 The robot will carry out the commands in the command set unless it hits an obstacle (a column or a wall) or runs out of battery.
 If a command results in hitting an obstacle, it will consume the battery, but the robot will not move. Instead, it will initiate a back off strategy:
+
 • Perform [TR, A, TL]. If an obstacle is hit, drop the rest of the sequence and
+
 • perform [TR, A, TR]. If an obstacle is hit, drop the rest of the sequence and
+
 • perform [TR, A, TR]. If an obstacle is hit, drop the rest of the sequence and
+
 • perform [TR, B, TR, A]. If an obstacle is hit, drop the rest of the sequence and
+
 • perform [TL, TL, A]. If an obstacle is hit,
-• the robot is considered stuck. Skip all the remaining commands and finish the program.
+
+• the robot is considered stuck. 
+Skip all the remaining commands and finish the program.
 The robot will execute each command in order until no more commands are left, the battery is spent, or all the back off sequences hit an obstacle.
 For example, if the robot has 4 units of battery and a “clean” command (requiring 5 units of battery) is received,
 the robot will stop and finish the program with 4 units of battery left. 
