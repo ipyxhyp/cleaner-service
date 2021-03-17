@@ -6,17 +6,25 @@ Performs following logic :
 
 To map the operating space, the robot will receive information about the room as a set of cells. Each cell represents:
 • A cleanable space of 1 by 1 that can be occupied and cleaned (S).
+
 • A column of 1 by 1 which can’t be occupied or cleaned (C)
+
 • A wall represented by an empty cell (null) or by being outside the matrix
+
 The map is provided as a matrix of m by n in which each element of the matrix is one of those items or else it is empty (null). 
 For example, the 4x4 map (top left is 0,0)
 
 The robot also recognizes a set of basic commands. Each command drains the battery of the robot by a certain amount.
 • Turn Left (TL). Instructs the robot to turn 90 degrees to the left. Consumes 1 unit of battery.
+
 • Turn Right (TR). Instructs the robot to turn 90 degrees to the right. Consumes 1 unit of battery.
+
 • Advance (A). Instructs the robot to advance one cell forward into the next cell. Consumes 2 unit of battery.
+
 • Back (B). Instructs the robot to move back one cell without changing direction. Consumes 3 units of battery.
+
 • Clean (C). Instructs the robot to clean the current cell. Consumes 5 units of battery
+
 
 A sequence of valid commands may look like: [ C, TR, A, C, A, C, A, C, TL, B, C, A, A, C, A, A, C, TL, C ].
 The robot will carry out the commands in the command set unless it hits an obstacle (a column or a wall) or runs out of battery.
