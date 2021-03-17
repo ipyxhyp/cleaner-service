@@ -1,7 +1,7 @@
 # cleaner-service
 Cleaner service application implementing the cleaner robot logic.
 This is a Spring Boot application.
-CleanerService processCommandList method which takes command list, position , battery charge and input surface as two dimensional array.
+CleanerService has processCommandList method which takes command list, position , battery charge and input surface as two dimensional array.
 Performs following logic : 
 
 To map the operating space, the robot will receive information about the room as a set of cells. Each cell represents:
