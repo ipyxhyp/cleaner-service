@@ -1,0 +1,9 @@
+{
+  "map": [ ["SPACE", "SPACE", "SPACE", "SPACE"],
+    ["SPACE", "SPACE", "COLUMN", "SPACE"],
+    ["SPACE", "SPACE", "SPACE", "SPACE"],
+    ["SPACE", null, "SPACE", "SPACE"] ],
+  "start": {"x": 2, "y": 3, "direction": "NORTH"},
+  "commands": [ "TL","ADVANCE","CLEAN","ADVANCE","CLEAN","TR","ADVANCE","CLEAN"],
+  "battery": 80
+}

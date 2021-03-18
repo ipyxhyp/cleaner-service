@@ -1,6 +1,7 @@
-package org.ptr.robot.dto;
+package org.ptr.robot.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -15,7 +16,7 @@ import org.ptr.robot.model.Position;
 @JsonIgnoreProperties
 @NoArgsConstructor
 @AllArgsConstructor
-public class CleanerResult {
+public class CleanerResponse implements Serializable  {
 
     private final List<Position> visited = new ArrayList<>();
     private final Set<Position> cleaned = new HashSet<>();

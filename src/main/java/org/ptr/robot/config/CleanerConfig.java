@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @ComponentScan(basePackages = {
-    "org.ptr.robot.service", "org.ptr.robot.model"
+    "org.ptr.robot"
 })
 public class CleanerConfig {
 

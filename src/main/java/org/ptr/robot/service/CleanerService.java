@@ -3,7 +3,7 @@ package org.ptr.robot.service;
 import java.util.List;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
-import org.ptr.robot.dto.CleanerResult;
+import org.ptr.robot.dto.response.CleanerResponse;
 import org.ptr.robot.model.BackOffStrategy;
 import org.ptr.robot.model.BatteryCharge;
 import org.ptr.robot.model.Position;
@@ -23,7 +23,7 @@ import org.springframework.stereotype.Service;
 public class CleanerService {
 
     @Getter
-    private final CleanerResult cleanerResult = new CleanerResult();
+    private final CleanerResponse cleanerResponse = new CleanerResponse();
 
     private BackOffStrategy backOffStrategy;
 
@@ -33,7 +33,7 @@ public class CleanerService {
     }
 
     /**
-     * 0
+     *
      *
      *
      * */
@@ -60,14 +60,14 @@ public class CleanerService {
                 processCommand(inputSurface, position, batteryCharge, command);
             }
         }
-        this.cleanerResult.setBatteryCharge(batteryCharge);
-        this.cleanerResult.setResultPosition(position);
+        this.cleanerResponse.setBatteryCharge(batteryCharge);
+        this.cleanerResponse.setResultPosition(position);
         log.info(
             " final position of cleaner robot : {} , battery charge left : {} , cells visited : {} , cells cleaned : {}",
-            this.cleanerResult.getResultPosition(),
-            this.cleanerResult.getBatteryCharge(),
-            this.cleanerResult.getVisited(),
-            this.cleanerResult.getCleaned()
+            this.cleanerResponse.getResultPosition(),
+            this.cleanerResponse.getBatteryCharge(),
+            this.cleanerResponse.getVisited(),
+            this.cleanerResponse.getCleaned()
         );
 
     }
@@ -123,7 +123,7 @@ public class CleanerService {
                         consumeCharge(batteryCharge, command.getValue());
                         // stay here consume only battery charge, mark cell as Cleaned
                         Position newCellPosition = cellPosition.toBuilder().build();
-                        this.cleanerResult.addCleaned(newCellPosition);
+                        this.cleanerResponse.addCleaned(newCellPosition);
                         log.info(" cell position after CLEAN : {} ", cellPosition);
                         isCommandExecuted = Boolean.TRUE;
                     } else {
@@ -363,7 +363,7 @@ public class CleanerService {
         if (isPositionUpdated) {
             Position newCellPosition = cellPosition.toBuilder().build();
             cellPosition.setX(x);
-            this.cleanerResult.addVisited(newCellPosition);
+            this.cleanerResponse.addVisited(newCellPosition);
             log.info(" cell position updated {}", cellPosition);
         }
     }
@@ -372,7 +372,7 @@ public class CleanerService {
         if (isPositionUpdated) {
             Position newCellPosition = cellPosition.toBuilder().build();
             cellPosition.setY(y);
-            this.cleanerResult.addVisited(newCellPosition);
+            this.cleanerResponse.addVisited(newCellPosition);
             log.info(" cell position updated {}", cellPosition);
         }
     }

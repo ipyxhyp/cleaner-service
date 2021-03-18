@@ -58,9 +58,9 @@ public class CleanerRobotTest {
         );
 
         cleanerService.processCommandList(commandsList, position, batteryCharge, inputSurface);
-        assertThat(cleanerService.getCleanerResult().getVisited()).isNotEmpty();
-        assertThat(cleanerService.getCleanerResult().getCleaned()).isNotEmpty();
-        assertThat(cleanerService.getCleanerResult().getResultPosition()).isNotNull();
+        assertThat(cleanerService.getCleanerResponse().getVisited()).isNotEmpty();
+        assertThat(cleanerService.getCleanerResponse().getCleaned()).isNotEmpty();
+        assertThat(cleanerService.getCleanerResponse().getResultPosition()).isNotNull();
 
     }
 
