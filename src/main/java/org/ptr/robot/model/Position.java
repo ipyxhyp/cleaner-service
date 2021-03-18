@@ -1,5 +1,6 @@
 package org.ptr.robot.model;
 
+import java.io.Serializable;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,7 +13,7 @@ import org.ptr.robot.model.enums.Direction;
 @NoArgsConstructor
 @EqualsAndHashCode
 @Builder(toBuilder = true)
-public class Position {
+public class Position implements Serializable {
 
     private Integer x, y;
     private Direction direction;

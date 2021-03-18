@@ -33,11 +33,14 @@ public class CleanerService {
     }
 
     /**
+     * @param commandList
+     * @param position
+     * @param batteryCharge
+     * @param inputSurface
      *
-     *
-     *
+     * @return CleanerResponse
      * */
-    public void processCommandList(List<Command> commandList, Position position,
+    public CleanerResponse processCommandList(List<Command> commandList, Position position,
         BatteryCharge batteryCharge, Surface[][] inputSurface) {
         // move from start and unless commandsList  is not empty - execute command
         for (Command command : commandList) {
@@ -69,7 +72,7 @@ public class CleanerService {
             this.cleanerResponse.getVisited(),
             this.cleanerResponse.getCleaned()
         );
-
+        return this.cleanerResponse;
     }
 
     private void processCommand(Surface[][] inputSurface, Position cellPosition,
@@ -232,7 +235,13 @@ public class CleanerService {
                 switch (moveDirection) {
                     case NORTH: {
                         if (isForward) {
-                            --x; // only move to forward position on X, up / north direction
+                            if( x == 0) {
+                                log.warn(" cannot move outside of the area, the cleaner is next to the wall {}, {}", x,
+                                    cells);
+                                return Boolean.FALSE;
+                            } else {
+                                --x; // only move to forward position on X, up / north direction
+                            }
                         } else {
                             if (x == cells) {
                                 // we are next to the wall of area
@@ -257,7 +266,14 @@ public class CleanerService {
                             }
                             ++y; // only move to forward position on Y, right / east direction
                         } else {
-                            --y; // only move to back position on Y, left / west direction
+                            if( y == 0){
+                                log.warn(" cannot move outside of the area, the cleaner is next to the wall {}, {}", y,
+                                    cells);
+                                return Boolean.FALSE;
+                            } else {
+                                --y; // only move to back position on Y, left / west direction
+                            }
+
                         }
                         // check next surface on x, y
                         isPositionUpdated = isSurfaceAccessible(surfaces[x][y]);
@@ -274,7 +290,13 @@ public class CleanerService {
                             }
                             ++x; // only move to forward position on X, down / south direction
                         } else {
-                            --x; // only move to back position on X, up / north direction
+                            if(x == 0){
+                                log.warn(" cannot move outside of the area, the cleaner is next to the wall {}, {}", x,
+                                    cells);
+                                return Boolean.FALSE;
+                            } else {
+                                --x; // only move to back position on X, up / north direction
+                            }
                         }
                         isPositionUpdated = isSurfaceAccessible(surfaces[x][y]);
                         updateCellPositionX(cellPosition, isPositionUpdated, x);
@@ -282,7 +304,13 @@ public class CleanerService {
                     }
                     case WEST: {
                         if (isForward) {
-                            --y; // only move to forward position on Y, left / west direction
+                            if(y == 0){
+                                log.warn(" cannot move outside of the area, the cleaner is next to the wall {}, {}", y,
+                                    cells);
+                                return Boolean.FALSE;
+                            } else {
+                                --y; // only move to forward position on Y, left / west direction
+                            }
                         } else {
                             if (y == cells) {
                                 // we are next to the wall of area

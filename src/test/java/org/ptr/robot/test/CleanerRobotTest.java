@@ -47,7 +47,7 @@ public class CleanerRobotTest {
         };
 
         Direction facing = Direction.NORTH;
-        int startX = 2, startY = 3;
+        int startX = 2, startY = 0;
         Position position = new Position(startX, startY, facing);
         BatteryCharge batteryCharge = new BatteryCharge(50);
         List<Command> commandsList = Arrays.asList(
