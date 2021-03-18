@@ -1,5 +1,5 @@
 # cleaner-service
-Cleaner service application implementing the cleaner robot logic.
+Cleaner service is application implementing the cleaner robot logic.
 This is a Spring Boot application.
 CleanerService has processCommandList method which takes command list, position , battery charge and input surface as two dimensional array.
 Performs following logic : 
