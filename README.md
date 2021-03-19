@@ -1,6 +1,67 @@
 # cleaner-service
-Cleaner service is application implementing the cleaner robot logic.
-This is a Spring Boot application.
+Cleaner service is a REST API application implementing the cleaner robot logic.
+Accessible after run at the http://localhost:8080/cleaner/start which accepts POST request in following JSON template/format : 
+CleanerRequest : 
+{
+"map": [ 
+  ["SPACE", "SPACE", "SPACE", "SPACE"],
+  ["SPACE", "SPACE", "COLUMN", "SPACE"],
+  ["SPACE", "SPACE", "SPACE", "SPACE"],
+  ["SPACE", null, "SPACE", "SPACE"] 
+],
+"start": {"x": 2, "y": 3, "direction": "NORTH"},
+"commands": [ "TL","ADVANCE","CLEAN","ADVANCE","CLEAN","TR","ADVANCE","CLEAN"],
+"battery": 80
+}
+
+and returns the following JSON response template :
+
+CleanerResponse: 
+{
+    "visited": [
+        {
+            "x": 2,
+            "y": 3,
+            "direction": "WEST"
+        },
+        {
+            "x": 2,
+            "y": 2,
+            "direction": "WEST"
+        },
+        {
+            "x": 2,
+            "y": 1,
+            "direction": "NORTH"
+        }
+    ],
+    "cleaned": [
+        {
+            "x": 2,
+            "y": 2,
+            "direction": "WEST"
+        },
+        {
+            "x": 2,
+            "y": 1,
+            "direction": "WEST"
+        },
+        {
+            "x": 1,
+            "y": 1,
+            "direction": "NORTH"
+        }
+    ],
+    "resultPosition": {
+        "x": 1,
+        "y": 1,
+        "direction": "NORTH"
+    },
+    "batteryCharge": {
+        "charge": 57
+    }
+}
+
 CleanerService has processCommandList method which takes command list, position , battery charge and input surface as two dimensional array.
 Performs following logic : 
 
