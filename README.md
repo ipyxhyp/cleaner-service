@@ -25,10 +25,7 @@ Accessible after run at the http://localhost:8080/cleaner/start which accepts PO
 
 }
 
-and returns the following JSON response template :
-
-
-CleanerResponse: 
+and returns the following JSON response template CleanerResponse : 
 
 {
 
