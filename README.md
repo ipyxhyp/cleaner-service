@@ -89,9 +89,9 @@ CleanerService has processCommandList method which takes command list, position 
 Performs following logic : 
 
 To map the operating space, the robot will receive information about the room as a set of cells. Each cell represents:
-• A cleanable space of 1 by 1 that can be occupied and cleaned (S).
+• A cleanable space of 1 by 1 that can be occupied and cleaned (SPACE).
 
-• A column of 1 by 1 which can’t be occupied or cleaned (C)
+• A column of 1 by 1 which can’t be occupied or cleaned (COLUMN)
 
 • A wall represented by an empty cell (null) or by being outside the matrix
 
@@ -103,26 +103,26 @@ The robot also recognizes a set of basic commands. Each command drains the batte
 
 • Turn Right (TR). Instructs the robot to turn 90 degrees to the right. Consumes 1 unit of battery.
 
-• Advance (A). Instructs the robot to advance one cell forward into the next cell. Consumes 2 unit of battery.
+• Advance (ADVANCE). Instructs the robot to advance one cell forward into the next cell. Consumes 2 unit of battery.
 
-• Back (B). Instructs the robot to move back one cell without changing direction. Consumes 3 units of battery.
+• Back (BACK). Instructs the robot to move back one cell without changing direction. Consumes 3 units of battery.
 
-• Clean (C). Instructs the robot to clean the current cell. Consumes 5 units of battery
+• Clean (CLEAN). Instructs the robot to clean the current cell. Consumes 5 units of battery
 
 
-A sequence of valid commands may look like: [ C, TR, A, C, A, C, A, C, TL, B, C, A, A, C, A, A, C, TL, C ].
+A sequence of valid commands may look like: [ CLEAN, TR, ADVANCE, CLEAN, ADVANCE, CLEAN, ADVANCE, CLEAN, TL, BACK, CLEAN, ADVANCE, ADVANCE, CLEAN, ADVANCE].
 The robot will carry out the commands in the command set unless it hits an obstacle (a column or a wall) or runs out of battery.
 If a command results in hitting an obstacle, it will consume the battery, but the robot will not move. Instead, it will initiate a back off strategy:
 
-• Perform [TR, A, TL]. If an obstacle is hit, drop the rest of the sequence and
+• Perform [TR, ADVANCE, TL]. If an obstacle is hit, drop the rest of the sequence and
 
-• perform [TR, A, TR]. If an obstacle is hit, drop the rest of the sequence and
+• perform [TR, ADVANCE, TR]. If an obstacle is hit, drop the rest of the sequence and
 
-• perform [TR, A, TR]. If an obstacle is hit, drop the rest of the sequence and
+• perform [TR, ADVANCE, TR]. If an obstacle is hit, drop the rest of the sequence and
 
-• perform [TR, B, TR, A]. If an obstacle is hit, drop the rest of the sequence and
+• perform [TR, BACK, TR, ADVANCE]. If an obstacle is hit, drop the rest of the sequence and
 
-• perform [TL, TL, A]. If an obstacle is hit,
+• perform [TL, TL, ADVANCE]. If an obstacle is hit,
 
 • the robot is considered stuck. 
 Skip all the remaining commands and finish the program.
