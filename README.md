@@ -4,8 +4,9 @@ Accessible after run at the http://localhost:8080/cleaner/start which accepts PO
 CleanerRequest : 
 
 {
-"map":
-[ 
+
+"map":[ 
+
   ["SPACE", "SPACE", "SPACE", "SPACE"],
   
   ["SPACE", "SPACE", "COLUMN", "SPACE"],
