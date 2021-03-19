@@ -4,7 +4,8 @@ Accessible after run at the http://localhost:8080/cleaner/start which accepts PO
 CleanerRequest : 
 
 {
-"map": [ 
+"map":
+[ 
   ["SPACE", "SPACE", "SPACE", "SPACE"],
   
   ["SPACE", "SPACE", "COLUMN", "SPACE"],
@@ -29,7 +30,9 @@ and returns the following JSON response template :
 CleanerResponse: 
 
 {
-    "visited": [
+
+    "visited":
+    [
         {
             "x": 2,
             "y": 3,
@@ -46,7 +49,9 @@ CleanerResponse:
             "direction": "NORTH"
         }
     ],
-    "cleaned": [
+    
+    "cleaned":
+    [
         {
             "x": 2,
             "y": 2,
@@ -63,14 +68,19 @@ CleanerResponse:
             "direction": "NORTH"
         }
     ],
-    "resultPosition": {
+    
+    "resultPosition":
+    {
         "x": 1,
         "y": 1,
         "direction": "NORTH"
     },
-    "batteryCharge": {
+    
+    "batteryCharge": 
+    {
         "charge": 57
     }
+    
 }
 
 
