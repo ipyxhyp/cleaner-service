@@ -2,21 +2,32 @@
 Cleaner service is a REST API application implementing the cleaner robot logic.
 Accessible after run at the http://localhost:8080/cleaner/start which accepts POST request in following JSON template/format : 
 CleanerRequest : 
+
 {
 "map": [ 
   ["SPACE", "SPACE", "SPACE", "SPACE"],
+  
   ["SPACE", "SPACE", "COLUMN", "SPACE"],
+  
   ["SPACE", "SPACE", "SPACE", "SPACE"],
+  
   ["SPACE", null, "SPACE", "SPACE"] 
+  
 ],
+
 "start": {"x": 2, "y": 3, "direction": "NORTH"},
+
 "commands": [ "TL","ADVANCE","CLEAN","ADVANCE","CLEAN","TR","ADVANCE","CLEAN"],
+
 "battery": 80
+
 }
 
 and returns the following JSON response template :
 
+
 CleanerResponse: 
+
 {
     "visited": [
         {
@@ -61,6 +72,7 @@ CleanerResponse:
         "charge": 57
     }
 }
+
 
 CleanerService has processCommandList method which takes command list, position , battery charge and input surface as two dimensional array.
 Performs following logic : 
