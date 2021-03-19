@@ -1,7 +1,7 @@
 # cleaner-service
 Cleaner service is a REST API application implementing the cleaner robot logic.
-Accessible after run at the http://localhost:8080/cleaner/start which accepts POST request in following JSON template/format : 
-CleanerRequest : 
+
+Accessible after run at the http://localhost:8080/cleaner/start which accepts POST request in following JSON template/format CleanerRequest : 
 
 {
 
